@@ -6,6 +6,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -27,59 +30,6 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
     </symbol>
 </svg>
-
-<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
-            aria-expanded="false" data-bs-toggle="dropdown" aria-label="Переключать тему (light)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em">
-            <use href="#sun-fill"></use>
-        </svg>
-        <span class="visually-hidden" id="bd-theme-text"><ya-tr-span data-index="0-0" data-translated="true"
-                                                                     data-source-lang="en" data-target-lang="ru"
-                                                                     data-value="Toggle theme"
-                                                                     data-translation="Переключать тему" data-ch="0"
-                                                                     data-type="trSpan">Переключать тему</ya-tr-span></span>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="light"
-                    aria-pressed="true">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                    <use href="#sun-fill"></use>
-                </svg>
-                Light
-                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                    <use href="#check2"></use>
-                </svg>
-            </button>
-        </li>
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-                    aria-pressed="false">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                    <use href="#moon-stars-fill"></use>
-                </svg>
-                Dark
-                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                    <use href="#check2"></use>
-                </svg>
-            </button>
-        </li>
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto"
-                    aria-pressed="false">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em">
-                    <use href="#circle-half"></use>
-                </svg>
-                Auto
-                <svg class="bi ms-auto d-none" width="1em" height="1em">
-                    <use href="#check2"></use>
-                </svg>
-            </button>
-        </li>
-    </ul>
-</div>
-
 
 <header data-bs-theme="dark">
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -104,7 +54,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">
+                        <a class="nav-link" href="/create-article">
                             <ya-tr-span data-index="3-0" data-translated="true" data-source-lang="en"
                                         data-target-lang="ru" data-value="Link" data-translation="Ссылка" data-ch="0"
                                         data-type="trSpan">Ссылка
@@ -138,10 +88,10 @@
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class=""
                     aria-label="Слайд 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Слайд 2"
-                    class=""></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Слайд 3" class="active"
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Слайд 2" class="active"
                     aria-current="true"></button>
+            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Слайд 3"
+                    class=""></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item">
@@ -151,40 +101,27 @@
                 </svg>
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1>Example headline.</h1>
-                        <p class="opacity-75">Some representative placeholder content for the first slide of the
-                            carousel.</p>
-                        <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
-                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                </svg>
-                <div class="container">
-                    <div class="carousel-caption">
                         <h1>
-                            <ya-tr-span data-index="20-0" data-translated="true" data-source-lang="en"
-                                        data-target-lang="ru" data-value="Another example headline."
-                                        data-translation="Еще один пример заголовка." data-ch="0" data-type="trSpan">Еще
-                                один пример заголовка.
+                            <ya-tr-span data-index="5-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru" data-value="Example headline."
+                                        data-translation="Пример заголовка." data-ch="0" data-type="trSpan">Пример
+                                заголовка.
                             </ya-tr-span>
                         </h1>
-                        <p>
-                            <ya-tr-span data-index="21-0" data-translated="true" data-source-lang="en"
+                        <p class="opacity-75">
+                            <ya-tr-span data-index="6-0" data-translated="true" data-source-lang="en"
                                         data-target-lang="ru"
-                                        data-value="Some representative placeholder content for the second slide of the carousel."
-                                        data-translation="Некоторые репрезентативные заполнители для второго слайда карусели."
+                                        data-value="Some representative placeholder content for the first slide of the carousel."
+                                        data-translation="Некоторые репрезентативные заполнители для первого слайда карусели."
                                         data-ch="0" data-type="trSpan">Некоторые репрезентативные заполнители для
-                                второго слайда карусели.
+                                первого слайда карусели.
                             </ya-tr-span>
                         </p>
                         <p><a class="btn btn-lg btn-primary" href="#">
-                            <ya-tr-span data-index="22-0" data-translated="true" data-source-lang="en"
-                                        data-target-lang="ru" data-value="Learn more" data-translation="Узнать больше"
-                                        data-ch="0" data-type="trSpan">Узнать больше
+                            <ya-tr-span data-index="7-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru" data-value="Sign up today"
+                                        data-translation="Зарегистрируйтесь сегодня" data-ch="0" data-type="trSpan">
+                                Зарегистрируйтесь сегодня
                             </ya-tr-span>
                         </a></p>
                     </div>
@@ -196,228 +133,224 @@
                     <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
                 </svg>
                 <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Another example headline.</h1>
+                        <p>Some representative placeholder content for the second slide of the carousel.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                </svg>
+                <div class="container">
                     <div class="carousel-caption text-end">
-                        <h1>
-                            <ya-tr-span data-index="16-0" data-translated="true" data-source-lang="en"
-                                        data-target-lang="ru" data-value="One more for good measure."
-                                        data-translation="Еще один на всякий случай." data-ch="0" data-type="trSpan">Еще
-                                один на всякий случай.
-                            </ya-tr-span>
-                        </h1>
-                        <p>
-                            <ya-tr-span data-index="17-0" data-translated="true" data-source-lang="en"
-                                        data-target-lang="ru"
-                                        data-value="Some representative placeholder content for the third slide of this carousel."
-                                        data-translation="Некоторые репрезентативные заполнители для третьего слайда этой карусели."
-                                        data-ch="0" data-type="trSpan">Некоторые репрезентативные заполнители для
-                                третьего слайда этой карусели.
-                            </ya-tr-span>
-                        </p>
-                        <p><a class="btn btn-lg btn-primary" href="#">
-                            <ya-tr-span data-index="18-0" data-translated="true" data-source-lang="en"
-                                        data-target-lang="ru" data-value="Browse gallery"
-                                        data-translation="Просмотреть галерею" data-ch="0" data-type="trSpan">
-                                Просмотреть галерею
-                            </ya-tr-span>
-                        </a></p>
+                        <h1>One more for good measure.</h1>
+                        <p>Some representative placeholder content for the third slide of this carousel.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
                     </div>
                 </div>
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden"><ya-tr-span data-index="6-0" data-translated="true" data-source-lang="en"
+            <span class="visually-hidden"><ya-tr-span data-index="8-0" data-translated="true" data-source-lang="en"
                                                       data-target-lang="ru" data-value="Previous"
                                                       data-translation="Назад" data-ch="0"
                                                       data-type="trSpan">Назад</ya-tr-span></span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden"><ya-tr-span data-index="6-0" data-translated="true" data-source-lang="en"
-                                                      data-target-lang="ru" data-value="Next" data-translation=" Далее"
-                                                      data-ch="0" data-type="trSpan"> Далее</ya-tr-span></span>
+            <span class="visually-hidden"><ya-tr-span data-index="8-0" data-translated="true" data-source-lang="en"
+                                                      data-target-lang="ru" data-value="Next" data-translation="Далее"
+                                                      data-ch="0" data-type="trSpan">Далее</ya-tr-span></span>
         </button>
     </div>
 
-
-
-
+    <div><p></p></div>
     <!-- Marketing messaging and featurettes
     ================================================== -->
     <!-- Wrap the rest of the page in another container to center all the content. -->
+    <div>
+        <div class="container marketing">
+            <!-- Three columns of text below the carousel -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <h2 class="fw-normal">
+                        <ya-tr-span data-index="7-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="Heading" data-translation="Заголовок" data-ch="0" data-type="trSpan">
+                            Заголовок
+                        </ya-tr-span>
+                    </h2>
+                    <p>
+                        <ya-tr-span data-index="8-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="Some representative placeholder content for the three columns of text below the carousel. "
+                                    data-translation="Некоторые репрезентативные заполнители для трех столбцов текста под каруселью. "
+                                    data-ch="0" data-type="trSpan">Некоторые репрезентативные заполнители для трех
+                            столбцов
+                            текста под каруселью.
+                        </ya-tr-span>
+                        <ya-tr-span data-index="8-1" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="This is the first column." data-translation="Это первый столбец."
+                                    data-ch="0" data-type="trSpan">Это первый столбец.
+                        </ya-tr-span>
+                    </p>
+                    <p><a class="btn btn-secondary" href="#">
+                        <ya-tr-span data-index="9-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="View details »" data-translation="Просмотреть подробную информацию »"
+                                    data-ch="0" data-type="trSpan">Просмотреть подробную информацию »
+                        </ya-tr-span>
+                    </a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <h2 class="fw-normal">
+                        <ya-tr-span data-index="10-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="Heading" data-translation="Заголовок" data-ch="1" data-type="trSpan">
+                            Заголовок
+                        </ya-tr-span>
+                    </h2>
+                    <p>
+                        <ya-tr-span data-index="11-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="Another exciting bit of representative placeholder content. "
+                                    data-translation="Еще один интересный фрагмент репрезентативного контента-заполнителя. "
+                                    data-ch="0" data-type="trSpan">Еще один интересный фрагмент репрезентативного
+                            контента-заполнителя.
+                        </ya-tr-span>
+                        <ya-tr-span data-index="11-1" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="This time, we've moved on to the second column."
+                                    data-translation="На этот раз мы перешли ко второму столбцу." data-ch="0"
+                                    data-type="trSpan">На этот раз мы перешли ко второму столбцу.
+                        </ya-tr-span>
+                    </p>
+                    <p><a class="btn btn-secondary" href="#">
+                        <ya-tr-span data-index="12-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="View details »" data-translation="Просмотреть подробную информацию »"
+                                    data-ch="1" data-type="trSpan">Просмотреть подробную информацию »
+                        </ya-tr-span>
+                    </a></p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                         xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                    </svg>
+                    <h2 class="fw-normal">
+                        <ya-tr-span data-index="13-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="Heading" data-translation="Заголовок" data-ch="1" data-type="trSpan">
+                            Заголовок
+                        </ya-tr-span>
+                    </h2>
+                    <p>
+                        <ya-tr-span data-index="14-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="And lastly this, the third column of representative placeholder content."
+                                    data-translation="И, наконец, это третий столбец репрезентативного содержимого-заполнителя."
+                                    data-ch="0" data-type="trSpan">И, наконец, это третий столбец репрезентативного
+                            содержимого-заполнителя.
+                        </ya-tr-span>
+                    </p>
+                    <p><a class="btn btn-secondary" href="#">
+                        <ya-tr-span data-index="15-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="View details »" data-translation="Просмотреть подробную информацию »"
+                                    data-ch="1" data-type="trSpan">Просмотреть подробную информацию »
+                        </ya-tr-span>
+                    </a></p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
 
-    <div class="container marketing">
 
-        <!-- Three columns of text below the carousel -->
-        <div class="row">
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
-                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                </svg>
-                <h2 class="fw-normal">
-                    <ya-tr-span data-index="7-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="Heading" data-translation="Заголовок" data-ch="0" data-type="trSpan">
-                        Заголовок
-                    </ya-tr-span>
-                </h2>
-                <p>
-                    <ya-tr-span data-index="8-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="Some representative placeholder content for the three columns of text below the carousel. "
-                                data-translation="Некоторые репрезентативные заполнители для трех столбцов текста под каруселью. "
-                                data-ch="0" data-type="trSpan">Некоторые репрезентативные заполнители для трех столбцов
-                        текста под каруселью.
-                    </ya-tr-span>
-                    <ya-tr-span data-index="8-1" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="This is the first column." data-translation="Это первый столбец."
-                                data-ch="0" data-type="trSpan">Это первый столбец.
-                    </ya-tr-span>
-                </p>
-                <p><a class="btn btn-secondary" href="#">
-                    <ya-tr-span data-index="9-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="View details »" data-translation="Просмотреть подробную информацию »"
-                                data-ch="0" data-type="trSpan">Просмотреть подробную информацию »
-                    </ya-tr-span>
-                </a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
-                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                </svg>
-                <h2 class="fw-normal">
-                    <ya-tr-span data-index="10-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="Heading" data-translation="Заголовок" data-ch="1" data-type="trSpan">
-                        Заголовок
-                    </ya-tr-span>
-                </h2>
-                <p>
-                    <ya-tr-span data-index="11-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="Another exciting bit of representative placeholder content. "
-                                data-translation="Еще один интересный фрагмент репрезентативного контента-заполнителя. "
-                                data-ch="0" data-type="trSpan">Еще один интересный фрагмент репрезентативного
-                        контента-заполнителя.
-                    </ya-tr-span>
-                    <ya-tr-span data-index="11-1" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="This time, we've moved on to the second column."
-                                data-translation="На этот раз мы перешли ко второму столбцу." data-ch="0"
-                                data-type="trSpan">На этот раз мы перешли ко второму столбцу.
-                    </ya-tr-span>
-                </p>
-                <p><a class="btn btn-secondary" href="#">
-                    <ya-tr-span data-index="12-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="View details »" data-translation="Просмотреть подробную информацию »"
-                                data-ch="1" data-type="trSpan">Просмотреть подробную информацию »
-                    </ya-tr-span>
-                </a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                     xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
-                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
-                </svg>
-                <h2 class="fw-normal">
-                    <ya-tr-span data-index="13-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="Heading" data-translation="Заголовок" data-ch="1" data-type="trSpan">
-                        Заголовок
-                    </ya-tr-span>
-                </h2>
-                <p>
-                    <ya-tr-span data-index="14-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="And lastly this, the third column of representative placeholder content."
-                                data-translation="И, наконец, это третий столбец репрезентативного содержимого-заполнителя."
-                                data-ch="0" data-type="trSpan">И, наконец, это третий столбец репрезентативного
-                        содержимого-заполнителя.
-                    </ya-tr-span>
-                </p>
-                <p><a class="btn btn-secondary" href="#">
-                    <ya-tr-span data-index="15-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="View details »" data-translation="Просмотреть подробную информацию »"
-                                data-ch="1" data-type="trSpan">Просмотреть подробную информацию »
-                    </ya-tr-span>
-                </a></p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+            <!-- START THE FEATURETTES -->
 
+            <hr class="featurette-divider">
 
-        <!-- START THE FEATURETTES -->
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">
-                    <ya-tr-span data-index="19-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
-                                data-value="First featurette heading. " data-translation="Первый заголовок featurette. "
-                                data-ch="0" data-type="trSpan">Первый заголовок featurette.
-                    </ya-tr-span>
-                    <span class="text-body-secondary"><ya-tr-span data-index="19-1" data-translated="true"
-                                                                  data-source-lang="en" data-target-lang="ru"
-                                                                  data-value="It’ll blow your mind."
-                                                                  data-translation="Это сведет вас с ума." data-ch="0"
-                                                                  data-type="trSpan">Это сведет вас с ума.</ya-tr-span></span>
-                </h2>
-                <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting
-                    prose here.</p>
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">
+                        <ya-tr-span data-index="19-0" data-translated="true" data-source-lang="en" data-target-lang="ru"
+                                    data-value="First featurette heading. "
+                                    data-translation="Первый заголовок featurette. "
+                                    data-ch="0" data-type="trSpan">Первый заголовок featurette.
+                        </ya-tr-span>
+                        <span class="text-body-secondary"><ya-tr-span data-index="19-1" data-translated="true"
+                                                                      data-source-lang="en" data-target-lang="ru"
+                                                                      data-value="It’ll blow your mind."
+                                                                      data-translation="Это сведет вас с ума."
+                                                                      data-ch="0"
+                                                                      data-type="trSpan">Это сведет вас с ума.</ya-tr-span></span>
+                    </h2>
+                    <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting
+                        prose here.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                         height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                        <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
+                    </svg>
+                </div>
             </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                     height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-                    <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-                </svg>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span
+                            class="text-body-secondary">See for yourself.</span></h2>
+                    <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of
+                        how
+                        this layout would work with some actual real-world content in place.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                         height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                        <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
+                    </svg>
+                </div>
             </div>
-        </div>
 
-        <hr class="featurette-divider">
+            <hr class="featurette-divider">
 
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span
-                        class="text-body-secondary">See for yourself.</span></h2>
-                <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how
-                    this layout would work with some actual real-world content in place.</p>
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span
+                            class="text-body-secondary">Checkmate.</span>
+                    </h2>
+                    <p class="lead">And yes, this is the last block of representative placeholder content. Again, not
+                        really
+                        intended to be actually read, simply here to give you a better view of what this would look like
+                        with some actual content. Your content.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                         height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+                         preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                        <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
+                    </svg>
+                </div>
             </div>
-            <div class="col-md-5 order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                     height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-                    <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-                </svg>
-            </div>
-        </div>
 
-        <hr class="featurette-divider">
+            <hr class="featurette-divider">
 
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span>
-                </h2>
-                <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really
-                    intended to be actually read, simply here to give you a better view of what this would look like
-                    with some actual content. Your content.</p>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                     height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-                     preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
-                    <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
-                </svg>
-            </div>
-        </div>
+            <!-- /END THE FEATURETTES -->
 
-        <hr class="featurette-divider">
-
-        <!-- /END THE FEATURETTES -->
-
-    </div><!-- /.container -->
-
+        </div><!-- /.container -->
+    </div>
 
     <!-- FOOTER -->
     <footer class="container">
