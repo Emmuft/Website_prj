@@ -30,6 +30,11 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/registrate')
+def registrate():
+    return render_template('registrate.html')
+
+
 @app.route('/create-article', methods=['POST', 'GET'])
 def create_article():
     if request.method == "POST":
