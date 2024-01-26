@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block body %}
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"></path>
+        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"></path>
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
+    </symbol>
+</svg>
+
+<main>
+    <div class="wood">
+        <img src="https://ochumelye.ru/images/wp-content/uploads/2019/06/derevyannaya-dver-svoimi-rukami-4.jpg" class="d-block w-100" alt="...">
+    </div>
+
+        <!-- Marketing messaging and featurettes
+        ================================================== -->
+        <!-- Wrap the rest of the page in another container to center all the content. -->
+        <div>
+            <div class="container marketing">
+                <!-- Three columns of text below the carousel -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                        </svg>
+                        <h2 class="fw-normal">
+                            <ya-tr-span data-index="7-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="Heading" data-translation="Заголовок" data-ch="0"
+                                        data-type="trSpan">
+                                Заголовок
+                            </ya-tr-span>
+                        </h2>
+                        <p>
+                            <ya-tr-span data-index="8-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="Some representative placeholder content for the three columns of text below the carousel. "
+                                        data-translation="Некоторые репрезентативные заполнители для трех столбцов текста под каруселью. "
+                                        data-ch="0" data-type="trSpan">Некоторые репрезентативные заполнители для трех
+                                столбцов
+                                текста под каруселью.
+                            </ya-tr-span>
+                            <ya-tr-span data-index="8-1" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="This is the first column." data-translation="Это первый столбец."
+                                        data-ch="0" data-type="trSpan">Это первый столбец.
+                            </ya-tr-span>
+                        </p>
+                        <p><a class="btn btn-secondary" href="#">
+                            <ya-tr-span data-index="9-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="View details »"
+                                        data-translation="Просмотреть подробную информацию »"
+                                        data-ch="0" data-type="trSpan">Просмотреть подробную информацию »
+                            </ya-tr-span>
+                        </a></p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                        </svg>
+                        <h2 class="fw-normal">
+                            <ya-tr-span data-index="10-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="Heading" data-translation="Заголовок" data-ch="1"
+                                        data-type="trSpan">
+                                Заголовок
+                            </ya-tr-span>
+                        </h2>
+                        <p>
+                            <ya-tr-span data-index="11-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="Another exciting bit of representative placeholder content. "
+                                        data-translation="Еще один интересный фрагмент репрезентативного контента-заполнителя. "
+                                        data-ch="0" data-type="trSpan">Еще один интересный фрагмент репрезентативного
+                                контента-заполнителя.
+                            </ya-tr-span>
+                            <ya-tr-span data-index="11-1" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="This time, we've moved on to the second column."
+                                        data-translation="На этот раз мы перешли ко второму столбцу." data-ch="0"
+                                        data-type="trSpan">На этот раз мы перешли ко второму столбцу.
+                            </ya-tr-span>
+                        </p>
+                        <p><a class="btn btn-secondary" href="#">
+                            <ya-tr-span data-index="12-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="View details »"
+                                        data-translation="Просмотреть подробную информацию »"
+                                        data-ch="1" data-type="trSpan">Просмотреть подробную информацию »
+                            </ya-tr-span>
+                        </a></p>
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-4">
+                        <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
+                             xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder"
+                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect>
+                        </svg>
+                        <h2 class="fw-normal">
+                            <ya-tr-span data-index="13-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="Heading" data-translation="Заголовок" data-ch="1"
+                                        data-type="trSpan">
+                                Заголовок
+                            </ya-tr-span>
+                        </h2>
+                        <p>
+                            <ya-tr-span data-index="14-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="And lastly this, the third column of representative placeholder content."
+                                        data-translation="И, наконец, это третий столбец репрезентативного содержимого-заполнителя."
+                                        data-ch="0" data-type="trSpan">И, наконец, это третий столбец репрезентативного
+                                содержимого-заполнителя.
+                            </ya-tr-span>
+                        </p>
+                        <p><a class="btn btn-secondary" href="#">
+                            <ya-tr-span data-index="15-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="View details »"
+                                        data-translation="Просмотреть подробную информацию »"
+                                        data-ch="1" data-type="trSpan">Просмотреть подробную информацию »
+                            </ya-tr-span>
+                        </a></p>
+                    </div><!-- /.col-lg-4 -->
+                </div><!-- /.row -->
+
+
+                <!-- START THE FEATURETTES -->
+
+                <hr class="featurette-divider">
+
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading fw-normal lh-1">
+                            <ya-tr-span data-index="19-0" data-translated="true" data-source-lang="en"
+                                        data-target-lang="ru"
+                                        data-value="First featurette heading. "
+                                        data-translation="Первый заголовок featurette. "
+                                        data-ch="0" data-type="trSpan">Первый заголовок featurette.
+                            </ya-tr-span>
+                            <span class="text-body-secondary"><ya-tr-span data-index="19-1" data-translated="true"
+                                                                          data-source-lang="en" data-target-lang="ru"
+                                                                          data-value="It’ll blow your mind."
+                                                                          data-translation="Это сведет вас с ума."
+                                                                          data-ch="0"
+                                                                          data-type="trSpan">Это сведет вас с ума.</ya-tr-span></span>
+                        </h2>
+                        <p class="lead">Some great placeholder content for the first featurette here. Imagine some
+                            exciting
+                            prose here.</p>
+                    </div>
+                    <div class="col-md-5">
+                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                             width="500"
+                             height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                             aria-label="Placeholder: 500x500"
+                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                            <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <hr class="featurette-divider">
+
+                <div class="row featurette">
+                    <div class="col-md-7 order-md-2">
+                        <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span
+                                class="text-body-secondary">See for yourself.</span></h2>
+                        <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea
+                            of
+                            how
+                            this layout would work with some actual real-world content in place.</p>
+                    </div>
+                    <div class="col-md-5 order-md-1">
+                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                             width="500"
+                             height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                             aria-label="Placeholder: 500x500"
+                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                            <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <hr class="featurette-divider">
+
+                <div class="row featurette">
+                    <div class="col-md-7">
+                        <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span
+                                class="text-body-secondary">Checkmate.</span>
+                        </h2>
+                        <p class="lead">And yes, this is the last block of representative placeholder content. Again,
+                            not
+                            really
+                            intended to be actually read, simply here to give you a better view of what this would look
+                            like
+                            with some actual content. Your content.</p>
+                    </div>
+                    <div class="col-md-5">
+                        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
+                             width="500"
+                             height="500" xmlns="http://www.w3.org/2000/svg" role="img"
+                             aria-label="Placeholder: 500x500"
+                             preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title>
+                            <rect width="100%" height="100%" fill="var(--bs-secondary-bg)"></rect>
+                            <text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <hr class="featurette-divider">
+
+                <!-- /END THE FEATURETTES -->
+
+            </div><!-- /.container -->
+        </div>
+
+
+</main>
+{% endblock %}
