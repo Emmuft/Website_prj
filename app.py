@@ -1,3 +1,6 @@
+
+import sqlite3
+
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -73,16 +76,20 @@ def registrate():
         email = request.form['email']
         password = request.form['password']
         password2 = request.form['password2']
-        if password == password2:
-            user = User(email=email, password=password)
-            try:
-                db.session.add(user)
-                db.session.commit()
-                return redirect('/home')
-            except:
-                return 'При добавлении произошла ошибка'
+        result = db.session.query(User).filter(User.email == email).all()
+        if not result:
+            if password == password2:
+                user = User(email=email, password=password)
+                try:
+                    db.add(user)
+                    db.session.commit()
+                    return redirect('/home')
+                except:
+                    return 'При добавлении произошла ошибка'
+            else:
+                return 'Пароли не совпадают'
         else:
-            return 'Пароли не совпадают'
+            return 'Пользователь с такой почтой существует'
 
     else:
         return render_template('registrate.html')
