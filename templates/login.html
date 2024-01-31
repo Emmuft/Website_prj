@@ -182,29 +182,25 @@
 
 
 <main class="form-signin w-100 m-auto">
-    <form method="post">
-        <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+    <form>
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
         <div class="form-floating">
-            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
-        </div>
-        <div class="form-floating">
-            <input name="password2" type="password" class="form-control" id="floatingPassword2" placeholder="Password">
-            <label for="floatingPassword">Password 2</label>
         </div>
 
         <div class="form-check text-start my-1">
             <div>
-                <p>Есть аккаунт? <a href="/login">Войти</a></p>
+                <p>Нет аккаунта? <a href="/registrate">Зарегистрироваться</a></p>
             </div>
         </div>
-        <button class="btn btn-primary w-100 py-2" type="submit">Sign up</button>
+        <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-body-secondary">&copy; 2024</p>
-        </form>
+    </form>
 </main>
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"

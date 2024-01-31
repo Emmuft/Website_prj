@@ -1,9 +1,10 @@
 from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+from requests_html import HTML
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///blog.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -17,22 +18,6 @@ class Article(db.Model):
 
     def __repr__(self):
         return '<Article %r>' % self.id
-
-
-@app.route('/')
-@app.route('/home')
-def index():
-    return render_template('index.html')
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-
-@app.route('/registrate')
-def registrate():
-    return render_template('registrate.html')
 
 
 @app.route('/create-article', methods=['POST', 'GET'])
@@ -52,6 +37,70 @@ def create_article():
             return 'При добавлении произошла ошибка'
     else:
         return render_template('create-article.html')
+
+
+@app.route('/login', methods=['POST', 'GET'])
+def login():
+    if request.method == "POST":
+        email = request.form['email']
+        password = request.form['password']
+
+        user = User(email=email, password=password)
+
+        try:
+            db.session.add(user)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'При добавлении произошла ошибка'
+
+    else:
+        return render_template('login.html')
+
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(300), nullable=False)
+    password = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+        return '<Article %r>' % self.id
+
+
+@app.route('/registrate', methods=['POST', 'GET'])
+def registrate():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        password2 = request.form['password2']
+        if password == password2:
+            user = User(email=email, password=password)
+            try:
+                db.session.add(user)
+                db.session.commit()
+                return redirect('/home')
+            except:
+                return 'При добавлении произошла ошибка'
+        else:
+            return 'Пароли не совпадают'
+
+    else:
+        return render_template('registrate.html')
+
+
+@app.route('/home')
+def home():
+    return render_template('home.html')
+
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
 if __name__ == '__main__':
