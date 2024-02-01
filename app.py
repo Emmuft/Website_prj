@@ -8,10 +8,11 @@ from requests_html import HTML
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+app.secret_key = 'some secret salt'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-
+login_manager = LoginManager(app)
 
 
 class Article(db.Model):
@@ -46,11 +47,16 @@ def create_article():
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(300), nullable=False)
+    email = db.Column(db.String(300), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
 
     def __repr__(self):
         return f'<{self.login}:{self.id}>'
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -59,16 +65,24 @@ def login():
     password = request.form.get('password')
     if request.method == 'POST':
         if email and password:
-            user = db.session.query(User).filter(User.email == email).first()
+            user = User.query.filter_by(email=email).first()
             if user and check_password_hash(user.password, password):
                 login_user(user)
                 next_page = request.args.get('next')
-                return redirect(url_for('home.html'))
+                return redirect('home')
             else:
                 return 'Неверное имя пользователя или пароль'
         else:
             return 'Пожалуйста, заполните все поля'
     return render_template('login.html')
+
+
+@app.after_request
+def redirect_to_sgnin(response):
+    if response.status_code == 401:
+        return redirect(url_for('login') + '?next=' + request.url)
+
+    return response
 
 
 @app.route('/registrate', methods=['POST', 'GET'])
@@ -93,6 +107,13 @@ def registrate():
                 return 'Такой пользователь есть'
 
     return render_template('registrate.html')
+
+
+@app.route('/logout', methods=['GET', 'POST'])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('hello_world'))
 
 
 @app.route('/home')
