@@ -6,12 +6,47 @@
 
 {% block body %}
 <body>
-    <div class="container mt-5">
-        &nbsp;
-        <p>Личный кабинет</p>
-        <a href="/registrate">Выйти</a>
-        <button>
-            <link rel="stylesheet" href="/registrate"></button>
+<div class="container mt-5">
+    &nbsp;
+    <div class="container">
+  <div class="profile-header">
+    <div class="profile-img">
+      <img src="./bg.jpg" width="200" alt="Profile Image">
     </div>
+    <div class="profile-nav-info">
+      <h3 class="user-name">Имя Фамилия</h3>
+    </div>
+    <div class="btn234">
+          <a href="/registrate">Выйти</a>
+    </div>
+  </div>
 
+  <div class="main-bd">
+    <div class="left-side">
+      <div class="profile-side">
+        <p class="mobile-no">Номер телефона</p>
+        <p class="user-mail">Почта</p>
+        <div class="profile-btn">
+          <button class="createbtn" id="Create-post">Изменить</button>
+        </div>
+      </div>
+
+    </div>
+    <div class="right-side">
+
+      <div class="nav">
+        <ul>
+          <li onclick="tabs(0)" class="user-post active">Заказы</li>
+          <li onclick="tabs(1)" class="user-review">Избранное</li>
+        </ul>
+      </div>
+      <div class="profile-body">
+        <div class="profile-posts tab">
+          <h1>Ваши заказы</h1>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
